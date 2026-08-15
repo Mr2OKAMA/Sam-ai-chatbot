@@ -3,7 +3,7 @@ import { isAllowedEmail } from '@/lib/auth';
 
 export async function POST(request: NextRequest) {
   try {
-    const { email, password } = await request.json();
+    const { email } = await request.json();
 
     if (!email || !isAllowedEmail(email)) {
       return NextResponse.json(

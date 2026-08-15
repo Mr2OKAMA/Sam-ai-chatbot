@@ -9,7 +9,9 @@ interface ChatInterfaceProps {
 }
 
 export default function ChatInterface({ isLoading }: ChatInterfaceProps) {
-  const [messages, setMessages] = useState([
+  const [messages, setMessages] = useState<
+    { id: string; role: 'user' | 'assistant'; content: string; createdAt: Date }[]
+  >([
     {
       id: '1',
       role: 'assistant' as const,
