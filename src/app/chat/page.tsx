@@ -5,7 +5,7 @@ import ChatInterface from '@/components/ChatInterface';
 import Header from '@/components/Header';
 
 export default function ChatPage() {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading] = useState(false);
 
   return (
     <div className="flex flex-col h-screen bg-white">
