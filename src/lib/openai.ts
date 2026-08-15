@@ -1,15 +1,23 @@
 import OpenAI from 'openai';
 
+let openaiClient: OpenAI | null = null;
+
 export function getOpenAIClient() {
+  if (openaiClient) {
+    return openaiClient;
+  }
+
   const apiKey = process.env.OPENAI_API_KEY;
 
   if (!apiKey) {
     throw new Error('OPENAI_API_KEY が設定されていません');
   }
 
-  return new OpenAI({
+  openaiClient = new OpenAI({
     apiKey,
   });
+
+  return openaiClient;
 }
 
 export const SYSTEM_PROMPT = `
