@@ -1,14 +1,16 @@
 import OpenAI from 'openai';
 
-const apiKey = process.env.OPENAI_API_KEY;
+export function getOpenAIClient() {
+  const apiKey = process.env.OPENAI_API_KEY;
 
-if (!apiKey) {
-  throw new Error('OPENAI_API_KEY が設定されていません');
+  if (!apiKey) {
+    throw new Error('OPENAI_API_KEY が設定されていません');
+  }
+
+  return new OpenAI({
+    apiKey,
+  });
 }
-
-export const openai = new OpenAI({
-  apiKey,
-});
 
 export const SYSTEM_PROMPT = `
 あなたは下水処理場の運転管理をサポートするAIアシスタントです。
